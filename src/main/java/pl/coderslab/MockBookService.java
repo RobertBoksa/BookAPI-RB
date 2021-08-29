@@ -1,14 +1,16 @@
 package pl.coderslab;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class MockBookService implements BookService {
 
     private List<Book> books;
     private static Long nextId = 4L;
-
 
 
     public MockBookService() {
@@ -27,7 +29,6 @@ public class MockBookService implements BookService {
 
     @Override
     public void add(Book book) {
-        new Book();
         book.setId(nextId++);
         books.add(book);
     }
@@ -44,7 +45,13 @@ public class MockBookService implements BookService {
         }
     }
 
-
+    @Override
+    public void update(Book book) {
+        if (this.get(book.getId()).isPresent()) {
+            int indexOf = books.indexOf(this.get(book.getId()).get());
+            books.set(indexOf, book);
+        }
+    }
 
     public void setBooks(List<Book> books) {
         this.books = books;

@@ -1,12 +1,37 @@
-package pl.coderslab;
+package pl.coderslab.model;
 
+
+import org.hibernate.validator.constraints.ISBN;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+@Entity
+@Table(name = "books")
 public class Book {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     private String isbn;
+
+
     private String title;
+
+
     private String author;
+
+
     private String publisher;
+
+
     private String type;
+
 
 
     public Book(Long id, String isbn, String title, String author, String publisher, String type) {

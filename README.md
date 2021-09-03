@@ -1,1 +1,2 @@
-# BookAPI-RB
+# BookApi2-RB
+BookApi with MySQL repository

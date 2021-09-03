@@ -1,6 +1,9 @@
-package pl.coderslab;
+package pl.coderslab.app;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.FilterRegistration;
 
 
 public class AppInitializer extends
@@ -15,4 +18,7 @@ public class AppInitializer extends
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};   }
+
+
+
 }

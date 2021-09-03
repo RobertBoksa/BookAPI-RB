@@ -6,7 +6,10 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "books")
@@ -17,19 +20,25 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotNull
+    @ISBN
     private String isbn;
 
-
+    @NotNull
+    @Length(min = 2, max =200)
     private String title;
 
-
+    @NotNull
+    @Length(min = 2, max =200)
+    @Pattern(regexp = "^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", message = "must not contain decimals")
     private String author;
 
-
+    @NotNull
+    @Length(min = 2, max =200)
     private String publisher;
 
-
+    @NotNull
+    @Length(min = 2, max =200)
     private String type;
 
 

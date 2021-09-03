@@ -76,7 +76,10 @@ public class ManageBookController {
     }
 
     @PostMapping("/add")
-    public String addBook(Book book) {
+    public String addBook(@Valid Book book, BindingResult result) {
+       if(result.hasErrors()){
+           return "addBook";
+       }
         bookService.add(book);
         return "redirect:/admin/books/all";
     }
